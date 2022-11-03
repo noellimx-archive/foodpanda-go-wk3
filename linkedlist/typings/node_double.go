@@ -1,8 +1,9 @@
 package linkedlist
 
 type NodeD[T any] struct {
-	prev *NodeS[T]
-	NodeS[T]
+	prev *NodeD[T]
+	val  T
+	next *NodeD[T]
 }
 
 func (node *NodeD[T]) Val() *T {
@@ -18,8 +19,7 @@ func (node *NodeD[T]) SetNextNode(next_ *NodeD[T]) {
 }
 
 func NewNodeD[T any](val_ T) *NodeD[T] {
-	n := &NodeD[T]{}
+	n := &NodeD[T]{val: val_}
 
-	n.SetVal(val_)
 	return n
 }

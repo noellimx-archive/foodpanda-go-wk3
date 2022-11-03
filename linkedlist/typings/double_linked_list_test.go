@@ -19,3 +19,15 @@ func TestEmptyListD(t *testing.T) {
 	assert.Equal(t, sizeGot, sizeWant, "Empty list should have size 0.")
 
 }
+
+func TestAddOneListD(t *testing.T) {
+
+	ll := NewLinkedListDouble[typePrim]()
+
+	sizeWant := 0
+
+	sizeGot := ll.Size()
+
+	assert.Equal(t, sizeGot, sizeWant, "Empty list should have size 0.")
+
+}
