@@ -13,6 +13,10 @@ type typePrim int
 func newEmptyListSingleInts() *linkedlist.LinkedListS[typePrim] {
 	return linkedlist.NewLinkedListSingle[typePrim]()
 }
+
+func newNodeSInt(val typePrim) *linkedlist.NodeS[typePrim] {
+	return linkedlist.NewNodeS[typePrim](val)
+}
 func TestNewEmptyListS(t *testing.T) {
 
 	listInts := newEmptyListSingleInts()
@@ -25,7 +29,7 @@ func TestNewEmptyListS(t *testing.T) {
 func TestAddOneToListS(t *testing.T) {
 
 	ll := newEmptyListSingleInts()
-	node0 := linkedlist.NewNodeS[typePrim](1)
+	node0 := newNodeSInt(1)
 
 	ll.ResetHead(node0)
 
@@ -39,11 +43,27 @@ func TestAddOneToListS(t *testing.T) {
 
 }
 
-func TestAddTwoToListS(t *testing.T) {
+func TestAddOneToListS_Alternate(t *testing.T) {
 
 	ll := newEmptyListSingleInts()
-	node0 := linkedlist.NewNodeS[typePrim](1)
-	node1 := linkedlist.NewNodeS[typePrim](2)
+	node0 := newNodeSInt(1)
+
+	ll.InsertNode(node0)
+
+	sizeWant := 1
+	sizeGot := ll.Size()
+	assert.Equal(t, sizeGot, sizeWant, "list should have size 1.")
+
+	tailWant := node0
+	tailGot := ll.Tail()
+	assert.Equal(t, tailGot, tailWant, "given size 1 tailGot should be tailWant.")
+
+}
+
+func TestAddTwoToListS(t *testing.T) {
+	ll := newEmptyListSingleInts()
+	node0 := newNodeSInt(1)
+	node1 := newNodeSInt(2)
 
 	ll.ResetHead(node0)
 
@@ -57,5 +77,14 @@ func TestAddTwoToListS(t *testing.T) {
 	tailGot := ll.Tail()
 
 	assert.Equal(t, tailGot, tailWant, "given size 2 tailGot should be tailWant.")
+}
+
+func TestAddAndRemoveTail(t *testing.T) {
+	ll := newEmptyListSingleInts()
+	node0 := newNodeSInt(1)
+
+	ll.InsertNode(node0)
+
+	ll.RemoveTail()
 
 }

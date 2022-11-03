@@ -33,6 +33,39 @@ func (ll *LinkedListS[T]) ResetHead(h_ *NodeS[T]) {
 
 }
 
+func (ll *LinkedListS[T]) sanityCheck() {
+	if ll.Size() == 0 || ll.head == nil || ll.tail == nil {
+		if !(ll.Size() == 0 && ll.head == nil && ll.tail == nil) {
+			log.Fatalln("(ll *LinkedListS[T]) [sanityCheck] failed. Initial state corrupted.")
+		}
+	}
+}
+
+// O(n) operation
+func (ll *LinkedListS[T]) RemoveTail() {
+	ll.sanityCheck()
+
+	this := ll.head
+
+	if this == nil {
+		return
+	}
+
+	for this != nil {
+		next := this.Next()
+		if next == nil {
+
+			ll.tail = this
+			ll.tail.SetNextNode(nil)
+			ll.size--
+			return
+		}
+
+		this = next
+	}
+
+}
+
 func (ll *LinkedListS[T]) InsertNode(next_ *NodeS[T]) {
 
 	if ll.size == 0 {
