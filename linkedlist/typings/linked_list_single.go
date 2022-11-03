@@ -6,11 +6,11 @@ import (
 	"strings"
 )
 
-type LinkedListS[T any] LinkedList_[T]
+type LinkedListS[ValT any] LinkedList_[ValT]
 
-type LinkedList_[T any] struct {
-	head *NodeS[T]
-	tail *NodeS[T]
+type LinkedList_[ValT any] struct {
+	head *NodeS[ValT]
+	tail *NodeS[ValT]
 	size int
 }
 
@@ -30,6 +30,42 @@ func (ll *LinkedListS[T]) ResetHead(h_ *NodeS[T]) {
 	ll.size = size_
 
 	log.Println("(ll *TLinkedList[T]) [ResetHead] head reassigned and size calibrated")
+
+}
+
+func (ll *LinkedListS[T]) InsertNode(next_ *NodeS[T]) {
+
+	if ll.size == 0 {
+		ll.ResetHead(next_)
+		return
+	}
+	ll.tail.SetNextNode(next_)
+	ll.tail = next_
+
+	ll.size++
+}
+
+func (ll *LinkedListS[T]) Size() int {
+
+	log.Println("(ll *TLinkedList[T]) [Size]")
+
+	return ll.size
+
+}
+
+func (ll *LinkedListS[T]) Head() *NodeS[T] {
+
+	log.Println("(ll *TLinkedList[T]) [Head]")
+
+	return ll.head
+
+}
+
+func (ll *LinkedListS[T]) Tail() *NodeS[T] {
+
+	log.Println("(ll *TLinkedList[T]) [Tail]")
+
+	return ll.tail
 
 }
 
