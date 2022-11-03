@@ -18,6 +18,11 @@ func initLog() {
 	}
 
 	log.SetOutput(file)
-
+	log.Println(" INTENTIONALLY LEFT BLANK")
+	log.Println(" INTENTIONALLY LEFT BLANK")
+	log.Println(" INTENTIONALLY LEFT BLANK")
+	log.Println(" INTENTIONALLY LEFT BLANK")
+	log.Println(" INTENTIONALLY LEFT BLANK")
+	log.Println(" INTENTIONALLY LEFT BLANK")
 	log.Println("[initLog] END")
 }
