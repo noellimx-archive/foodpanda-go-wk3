@@ -47,7 +47,14 @@ func (ll *LinkedListS[T]) RemoveTail() {
 
 	this := ll.head
 
-	if this == nil {
+	switch ll.Size() {
+	case 0:
+		return
+	case 1:
+		ll.head = nil
+		ll.tail = nil
+		ll.size--
+
 		return
 	}
 

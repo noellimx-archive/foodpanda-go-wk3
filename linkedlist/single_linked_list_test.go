@@ -87,4 +87,13 @@ func TestAddAndRemoveTail(t *testing.T) {
 
 	ll.RemoveTail()
 
+	sizeWant := 0
+	sizeGot := ll.Size()
+	assert.Equal(t, sizeWant, sizeGot, fmt.Sprintf("given size 1-1 should be 0. %d %d", sizeWant, sizeGot))
+
+	var tailWant *linkedlist.NodeS[typePrim] = nil
+	tailGot := ll.Tail()
+
+	assert.Equal(t, tailGot, tailWant, "given size 1-1 tailGot should be nil.")
+
 }
