@@ -43,6 +43,14 @@ func (ll *LinkedListD[T]) PrintAll() {
 	log.Println(this.Val())
 }
 
+func (ll *LinkedListD[T]) Size() int {
+
+	log.Println("(ll *LinkedListD[T]) [Size]")
+
+	return ll.size
+
+}
+
 func NewLinkedListDouble[T any]() *LinkedListD[T] {
 	l := &LinkedListD[T]{
 		head: &NodeS[T]{},
