@@ -11,7 +11,7 @@ func (node *NodeD[T]) Val() *T {
 }
 
 func (node *NodeD[T]) Next() *NodeD[T] {
-	return node.Next()
+	return node.next
 }
 
 func (node *NodeD[T]) SetNextNode(next_ *NodeD[T]) {
